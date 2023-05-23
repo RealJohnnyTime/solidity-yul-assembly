@@ -20,4 +20,14 @@ contract YulllzTest is Test {
         yulllz.setNumber(x);
         assertEq(yulllz.number(), x);
     }
+
+    function testAddOneAnTwo() public {
+        assertEq(yulllz.addOneAnTwo(), 3);
+    }
+
+    function testHowManyEvens() public {
+        assertEq(yulllz.howManyEvens(1, 10), 5);
+        assertEq(yulllz.howManyEvens(1, 15), 7);
+        assertEq(yulllz.howManyEvens(0, 4), 2);
+    }
 }

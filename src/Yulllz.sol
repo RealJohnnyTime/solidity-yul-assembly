@@ -16,4 +16,35 @@ contract Yulllz {
             sstore(number.slot, add(number_, 1))
         }
     }
+
+    function addOneAnTwo() external pure returns(uint256) {
+        uint256 value;
+
+        assembly {
+            let one := 1
+            let two := 2
+            value := add(one, two)
+        }
+
+        return value;
+    }
+
+    function howManyEvens(uint256 num1, uint256 num2) external pure returns(uint256) {
+        uint256 value;
+        
+        assembly {
+            for{let i := num1} lt(i, add(num2, 1)) {i := add(i, 1)} {
+                
+                if iszero(i) {
+                    continue
+                }
+
+                if eq(mod(i, 2), 0) {
+                    value := add(value, 1)
+                }
+            }
+        }
+
+        return value;
+    }
 }
